@@ -11,9 +11,7 @@ def call(){
                 steps {
                     script{
                         env.STG_NAME = ''
-                        def build = (params.CHOICE == 'maven') ? 'maven.groovy' : 'gradle.groovy'
-                        def ejecucion = load build
-                        ejecucion.call()
+                        "${params.CHOICE}".call()
                     }
                 }
             }

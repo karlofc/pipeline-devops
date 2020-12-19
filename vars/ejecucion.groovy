@@ -11,7 +11,12 @@ def call(){
                 steps {
                     script{
                         env.STG_NAME = ''
-                        "${params.CHOICE}".call()
+
+                        if(params.CHOICE == 'manen'){
+                            maven.call()
+                        } else {
+                            gradle.call()
+                        }
                     }
                 }
             }

@@ -11,10 +11,12 @@ def call(){
     def sStages = params.STAGE
     def str = sStages.split(';');
 
-    for(String values : str){
-        if (!stages_list.contains(values.trim())){
-            env.STG_NAME = "Stage no valido: ${values}"
-            error "Stage no valido"
+    if(sStages.trim() != ''){
+        for(String values : str){
+            if (!stages_list.contains(values.trim())){
+                env.STG_NAME = "Stage no valido: ${values}"
+                error "Stage no valido"
+            }
         }
     }
 

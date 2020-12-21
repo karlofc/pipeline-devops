@@ -7,8 +7,14 @@
 def call(){
     def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
 
-    println "Stages a ejecutar {$params.STAGE}"
     def sStages = params.STAGE
+
+    if(sStages.trim() == ''){
+        println "Stages a ejecutar [TODOS]"
+    }else{
+        println "Stages a ejecutar [{$sStages}]"
+    }
+
     def str = sStages.split(';');
 
     if(sStages.trim() != ''){

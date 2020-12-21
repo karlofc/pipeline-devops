@@ -11,9 +11,8 @@ def call(){
     def str = params.STAGE.trim(';')
 
     for( String values : str )
-        println(values);
-    } 
-    
+        println(values)
+
     stage('build'){
         env.STG_NAME = 'build'
         bat 'mvnw.cmd clean compile -e'

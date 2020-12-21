@@ -8,7 +8,8 @@ def call(){
     def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
 
     println "Stages a ejecutar {$params.STAGE}"
-    def str = params.STAGE.trim(';')
+    def sStages = params.STAGE
+    def str = sStages.trim();
 
     for( String values : str )
         println(values)

@@ -4,6 +4,7 @@ def call(){
 
         parameters {
             choice(name: 'CHOICE', choices: ['maven', 'gradle'], description: 'Herramienta de construccion')
+            string(name: 'STAGE', defaultValue: '', description: 'Stages a ejecutar')
         }
 
         stages {
@@ -12,7 +13,7 @@ def call(){
                     script{
                         env.STG_NAME = ''
 
-                        if(params.CHOICE == 'manen'){
+                        if(params.CHOICE == 'maven'){
                             maven.call()
                         } else {
                             gradle.call()

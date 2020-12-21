@@ -5,10 +5,21 @@
 */
 
 def call(){
-  
-    stage('build & test'){
-        env.STG_NAME = 'build & test'
+    def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
+
+    println "Stages a ejecutar {$params.STAGE}"
+    
+    stage('build'){
+        env.STG_NAME = 'build'
         bat 'gradle clean build'
+    }
+    stage('test'){
+        env.STG_NAME = 'test'
+        bat 'gradle test'
+    }
+    stage('jar'){
+        env.STG_NAME = 'jar'
+        bat 'gradle jar'
     }
     stage('sonar'){
         env.STG_NAME = 'sonar'

@@ -5,7 +5,10 @@
 */
 
 def call(){
-  
+    def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
+
+    println "Stages a ejecutar {$params.STAGE}"
+    
     stage('build'){
         env.STG_NAME = 'build'
         bat 'mvnw.cmd clean compile -e'
@@ -14,7 +17,7 @@ def call(){
         env.STG_NAME = 'test'
         bat 'mvnw.cmd clean test -e'
     }
-    stage('Jar') {
+    stage('jar') {
         env.STG_NAME = 'Jar'
         bat 'mvnw.cmd clean package -e'
     }

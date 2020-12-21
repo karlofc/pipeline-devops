@@ -8,6 +8,11 @@ def call(){
     def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
 
     println "Stages a ejecutar {$params.STAGE}"
+    def str = params.STAGE.trim(';')
+
+    for( String values : str )
+        println(values);
+    } 
     
     stage('build'){
         env.STG_NAME = 'build'

@@ -9,10 +9,12 @@ def call(){
 
     println "Stages a ejecutar {$params.STAGE}"
     def sStages = params.STAGE
-    def str = sStages.trim();
+    def str = sStages.trim(';');
 
-    for( String values : str )
-        println(values)
+    for(String values : str){
+        if (!stages_list.contains(values))
+            error "Stage no valido"
+    }
 
     stage('build'){
         env.STG_NAME = 'build'

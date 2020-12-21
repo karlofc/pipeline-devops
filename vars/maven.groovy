@@ -9,11 +9,11 @@ def call(){
 
     println "Stages a ejecutar {$params.STAGE}"
     def sStages = params.STAGE
-    def str = sStages.trim(';');
+    def str = sStages.split(';');
 
     for(String values : str){
         if (!stages_list.contains(values.toLowerCase())){
-            env.STG_NAME = "Stage no valido: {$values}"
+            env.STG_NAME = "Stage no valido: ${values}"
             error "Stage no valido"
         }
     }

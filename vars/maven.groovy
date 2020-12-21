@@ -12,8 +12,10 @@ def call(){
     def str = sStages.trim(';');
 
     for(String values : str){
-        if (!stages_list.contains(values))
+        if (!stages_list.contains(values.toLowerCase())){
+            env.STG_NAME = "Stage no valido: {$values}"
             error "Stage no valido"
+        }
     }
 
     stage('build'){

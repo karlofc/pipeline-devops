@@ -6,7 +6,7 @@ def validStages() {
 def baseOS(){
     def os = ''
 
-    if(isUnix){
+    if(isUnix()){
         os = 'Unix'    
     } else {
         os = 'Windows'

@@ -11,7 +11,7 @@ def call(){
             stage('Pipeline') {
                 steps {
                     script{
-                        util.baseOS
+                        util.baseOS()
                         env.STG_NAME = ''
 
                         if(params.CHOICE == 'maven'){

@@ -5,7 +5,7 @@
 */
 
 def call(){
-    def stages_list = util.stages_list
+    def stages_list = util.validStages()
 
     def sStages = params.STAGE
 

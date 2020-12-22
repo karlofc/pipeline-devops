@@ -10,6 +10,8 @@ def call(){
 
     util.validateStages(sStages)
 
+    def str = sStages.split(';');
+
     for(String values : stages_list){
 
         switch(values){

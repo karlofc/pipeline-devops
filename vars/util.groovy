@@ -1,11 +1,11 @@
-def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
+stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
 
 def validStages() {
     return stages_list
 }
 
 def validateStages(sStages){
-    def stages_list = validStages()
+    //def stages_list = validStages()
 
     if(sStages.trim() == ''){
         println "Stages a ejecutar [TODOS]"

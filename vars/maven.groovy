@@ -5,7 +5,7 @@
 */
 
 def call(){
-    def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
+    //def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
 
     def sStages = params.STAGE
 
@@ -19,14 +19,14 @@ def call(){
 
     if(sStages.trim() != ''){
         for(String values : str){
-            if (!stages_list.contains(values.trim())){
+            if (!util.stages_list.contains(values.trim())){
                 env.STG_NAME = "Stage no valido: ${values}"
                 error "Stage no valido"
             }
         }
     }
 
-    for(String values : stages_list){
+    for(String values : util.stages_list){
 
         switch(values){
             case 'build':

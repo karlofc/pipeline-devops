@@ -5,7 +5,7 @@
 */
 
 def call(){
-    def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
+    def stages_list = util.validStages()
 
     def sStages = params.STAGE
 

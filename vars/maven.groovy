@@ -6,25 +6,9 @@
 
 def call(){
     def stages_list = util.validStages()
-
     def sStages = params.STAGE
 
-    if(sStages.trim() == ''){
-        println "Stages a ejecutar [TODOS]"
-    }else{
-        println "Stages a ejecutar [{$sStages}]"
-    }
-
-    def str = sStages.split(';');
-
-    if(sStages.trim() != ''){
-        for(String values : str){
-            if (!stages_list.contains(values.trim())){
-                env.STG_NAME = "Stage no valido: ${values}"
-                error "Stage no valido"
-            }
-        }
-    }
+    util.validateStages(sStages)
 
     for(String values : stages_list){
 

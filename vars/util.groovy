@@ -1,11 +1,22 @@
-stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
-
 def validStages() {
+    def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
     return stages_list
 }
 
+def baseOS(){
+    def os = ''
+
+    if(isUnix){
+        os = 'Unix'    
+    } else {
+        os = 'Windows'
+    }
+
+    println "Jenkins OS [${os}]"
+}
+
 def validateStages(sStages){
-    //def stages_list = validStages()
+    def stages_list = validStages()
 
     if(sStages.trim() == ''){
         println "Stages a ejecutar [TODOS]"

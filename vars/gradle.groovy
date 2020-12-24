@@ -12,7 +12,7 @@ def call(){
 
     util.validateStages(sStages)
 
-    def str = sStages.split(';');
+    def str = sStages.split(Constants.SPLIT_SYMBOL);
 
     for(String values : stages_list){
 

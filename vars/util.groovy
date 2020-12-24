@@ -21,7 +21,7 @@ def validateStages(sStages){
         println "Stages a ejecutar [${sStages}]"
     }
 
-    def str = sStages.split(';');
+    def str = sStages.split(Constants.SPLIT_SYMBOL);
 
     if(sStages.trim() != ''){
         for(String values : str){

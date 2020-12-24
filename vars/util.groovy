@@ -1,13 +1,10 @@
-def validStages() {
-    def stages_list = ['build', 'test', 'jar', 'sonar', 'run', 'testing', 'nexus']
-    return stages_list
-}
+import com.util.Constants
 
 def baseOS(){
     def os = ''
 
     if(isUnix()){
-        os = 'Unix'    
+        os = 'Unix/Linux/MacOS'    
     } else {
         os = 'Windows'
     }
@@ -16,12 +13,12 @@ def baseOS(){
 }
 
 def validateStages(sStages){
-    def stages_list = validStages()
+    def stages_list = Constants.STAGES
 
     if(sStages.trim() == ''){
         println "Stages a ejecutar [TODOS]"
     }else{
-        println "Stages a ejecutar [{$sStages}]"
+        println "Stages a ejecutar [${sStages}]"
     }
 
     def str = sStages.split(';');
@@ -29,8 +26,8 @@ def validateStages(sStages){
     if(sStages.trim() != ''){
         for(String values : str){
             if (!stages_list.contains(values.trim())){
-                env.STG_NAME = "Stage no valido: ${values}"
-                error "Stage no valido"
+                env.STG_NAME = "${values} (no valido)"
+                error "Stage no valido: ${values}"
             }
         }
     }

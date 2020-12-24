@@ -4,8 +4,10 @@
 	ejecucion.call()
 */
 
+import com.util.Constants
+
 def call(){
-    def stages_list = util.validStages()
+    def stages_list = Constants.STAGES
     def sStages = params.STAGE
 
     util.validateStages(sStages)

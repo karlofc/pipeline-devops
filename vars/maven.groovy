@@ -1,3 +1,5 @@
+import com.util.Constants
+
 /*
 	forma de invocación de método call:
 	def ejecucion = load 'script.groovy'
@@ -5,7 +7,7 @@
 */
 
 def call(){
-    def stages_list = util.validStages()
+    def stages_list = Constants.STAGES
     def sStages = params.STAGE
 
     util.validateStages(sStages)

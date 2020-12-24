@@ -1,3 +1,5 @@
+import com.util.Constants
+
 def call(){
     pipeline {
         agent any
@@ -14,7 +16,7 @@ def call(){
                         util.baseOS()
                         env.STG_NAME = ''
 
-                        if(params.CHOICE == 'maven'){
+                        if(params.CHOICE == Constants.MAVEN){
                             maven.call()
                         } else {
                             gradle.call()

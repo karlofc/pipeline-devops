@@ -25,26 +25,26 @@ def call(){
                     }
                 }
                 break
-            case 'test':
+            case Constants.STAGE_TEST:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage('test'){
-                        env.STG_NAME = 'test'
+                    stage(Constants.STAGE_TEST){
+                        env.STG_NAME = Constants.STAGE_TEST
                         bat 'gradle test'
                     }
                 }
                 break
-            case 'jar':
+            case Constants.STAGE_JAR:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage('jar') {
-                        env.STG_NAME = 'Jar'
+                    stage(Constants.STAGE_JAR) {
+                        env.STG_NAME = Constants.STAGE_JAR
                         bat 'gradle jar'
                     }
                 }
                 break
-            case 'sonar':
+            case Constants.STAGE_SONAR:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage('sonar'){
-                        env.STG_NAME = 'sonar'
+                    stage(Constants.STAGE_SONAR){
+                        env.STG_NAME = Constants.STAGE_SONAR
                         def scannerHome = tool 'sonar-scanner';
                         withSonarQubeEnv('sonar') {
                             bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build -Dsonar.login=75a0e9b0613f563c0e69a23174cf79eb5d4d74c7"
@@ -52,27 +52,27 @@ def call(){
                     }
                 }
                 break 
-            case 'run':
+            case Constants.STAGE_RUN:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage('run'){
-                        env.STG_NAME = 'run'
+                    stage(Constants.STAGE_RUN){
+                        env.STG_NAME = Constants.STAGE_RUN
                         bat 'start gradle bootRun'
                     }
                 }
                 break
-            case 'testing':
+            case Constants.STAGE_TESTING:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage('testing'){
-                        env.STG_NAME = 'testing'
+                    stage(Constants.STAGE_TESTING){
+                        env.STG_NAME = Constants.STAGE_TESTING
                         sleep 20
                         bat 'curl http://localhost:8082/rest/mscovid/estadoMundial'
                     }
                 }
                 break
-            case 'nexus':
+            case Constants.STAGE_NEXUS:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage('nexus'){
-                        env.STG_NAME = 'nexus'
+                    stage(Constants.STAGE_NEXUS){
+                        env.STG_NAME = Constants.STAGE_NEXUS
                         nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'build\\libs\\DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]
                     }
                 }

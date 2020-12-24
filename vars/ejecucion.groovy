@@ -30,7 +30,7 @@ def call(){
                 slackSend color: 'good', message: "Build Success: [Carlo Figueroa][${env.JOB_NAME}][${params.CHOICE}] Ejecucion exitosa.", teamDomain: 'dipdevopsusach2020', tokenCredentialId: 'slack-token-diplomado'
             }
             failure {
-                slackSend color: 'danger', message: "Build Failure: [Carlo Figueroa][${env.JOB_NAME}][${params.CHOICE}] Ejecución fallida en stage [${env.STG_NAME}].", teamDomain: 'dipdevopsusach2020', tokenCredentialId: 'slack-token-diplomado'
+                slackSend color: 'danger', message: "Build Failure: [Carlo Figueroa][${env.JOB_NAME}][${params.CHOICE}] Ejecucion fallida en stage [${env.STG_NAME}].", teamDomain: 'dipdevopsusach2020', tokenCredentialId: 'slack-token-diplomado'
             }
         }
     }

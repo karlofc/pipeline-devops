@@ -17,10 +17,10 @@ def call(){
     for(String values : stages_list){
 
         switch(values){
-            case 'build':
+            case Constants.STAGE_BUILD:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage('build'){
-                        env.STG_NAME = 'build'
+                    stage(Constants.STAGE_BUILD){
+                        env.STG_NAME = Constants.STAGE_BUILD
                         bat 'gradle clean build'
                     }
                 }

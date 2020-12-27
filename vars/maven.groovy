@@ -16,6 +16,7 @@ def call(){
 
     for(String values : stages_list){
 
+        println "Stage: ${values}"
         switch(values){
             case Constants.STAGE_BUILD:
                 if(sStages.trim() == '' || str.contains(values)){

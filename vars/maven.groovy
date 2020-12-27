@@ -14,9 +14,10 @@ def call(){
 
     def str = sStages.split(Constants.SPLIT_SYMBOL);
 
+    println "${stages_list}"
+    
     for(String values : stages_list){
 
-        println "Stage: ${values}"
         switch(values){
             case Constants.STAGE_BUILD:
                 if(sStages.trim() == '' || str.contains(values)){

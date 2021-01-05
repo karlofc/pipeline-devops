@@ -16,6 +16,8 @@ def call(){
                         bat 'set'
                         util.baseOS()
                         env.STG_NAME = ''
+                        
+                        figlet params.CHOICE
 
                         if(params.CHOICE == Constants.MAVEN){
                             maven.call()

@@ -39,7 +39,10 @@ def pipelineType(branch_name){
     if(branch_name ==~ /develop/ || branch_name ==~ /feature-.*/){
         pipeline_type = Constants.IC
         figlet "continuous integration"
-    } else {
+    } else if(branch_name ==~ /release-v\d{1,}-\d{1,}-\d{1,}$/){
+        pipeline_type = Constants.RELEASE
+        figlet "continuous deployment"
+    } else if(branch_name ==~ /origin\/release-v\d{1,}-\d{1,}-\d{1,}$/){
         pipeline_type = Constants.RELEASE
         figlet "continuous deployment"
     }

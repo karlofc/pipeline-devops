@@ -13,11 +13,13 @@ def call(){
             stage('Pipeline') {
                 steps {
                     script{
-                        bat 'set'
+                        //bat 'set'
                         util.baseOS()
                         env.STG_NAME = ''
                         
                         figlet params.CHOICE
+
+                        env.PIPELINE_TYPE = util.pipelineType(env.BRANCH_NAME)
 
                         if(params.CHOICE == Constants.MAVEN){
                             maven.call()

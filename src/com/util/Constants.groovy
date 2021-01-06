@@ -1,6 +1,8 @@
 package com.util
 
 class Constants {
+    public static final String IC = 'IC'
+    public static final String RELEASE = 'RELEASE'
     public static final String MAVEN = 'maven'
     public static final String GRADLE = 'gradle'
     public static final STAGES = [STAGE_BUILD, STAGE_TEST, STAGE_JAR, STAGE_SONAR, STAGE_RUN, STAGE_TESTING, STAGE_NEXUS]

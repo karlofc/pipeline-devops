@@ -66,7 +66,7 @@ def call(){
                 if(sStages.trim() == '' || str.contains(values)){
                     stage(Constants.STAGE_REST){
                         env.STG_NAME = Constants.STAGE_REST
-                        sleep 10
+                        sleep 20
                         bat 'curl http://localhost:8082/rest/mscovid/estadoMundial'
                     }
                 }

@@ -12,8 +12,8 @@ def baseOS(){
     println "Jenkins OS [${os}]"
 }
 
-def validateStages(sStages){
-    def stages_list = Constants.STAGES
+def validateStages(sStages, stages_list){
+    //def stages_list = Constants.STAGES
 
     if(sStages.trim() == ''){
         println "Stages a ejecutar [TODOS]"

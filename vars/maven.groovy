@@ -7,10 +7,10 @@ import com.util.Constants
 */
 
 def call(){
-    def stages_list = Constants.STAGES
+    def stages_list = Constants.STAGES_MAVEN
     def sStages = params.STAGE
 
-    util.validateStages(sStages)
+    util.validateStages(sStages, stages_list)
 
     def str = sStages.split(Constants.SPLIT_SYMBOL);
 
@@ -54,27 +54,27 @@ def call(){
                     }
                 }
                 break 
-            case Constants.STAGE_RUN:
+            case Constants.STAGE_RUNJAR:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage(Constants.STAGE_RUN){
-                        env.STG_NAME = Constants.STAGE_RUN
+                    stage(Constants.STAGE_RUNJAR){
+                        env.STG_NAME = Constants.STAGE_RUNJAR
                         bat 'start mvnw.cmd spring-boot:run'
                     }
                 }
                 break
-            case Constants.STAGE_TESTING:
+            case Constants.STAGE_REST:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage(Constants.STAGE_TESTING){
-                        env.STG_NAME = Constants.STAGE_TESTING
+                    stage(Constants.STAGE_REST){
+                        env.STG_NAME = Constants.STAGE_REST
                         sleep 10
                         bat 'curl http://localhost:8082/rest/mscovid/estadoMundial'
                     }
                 }
                 break
-            case Constants.STAGE_NEXUS:
+            case Constants.STAGE_NEXUSCI:
                 if(sStages.trim() == '' || str.contains(values)){
-                    stage(Constants.STAGE_NEXUS){
-                        env.STG_NAME = Constants.STAGE_NEXUS
+                    stage(Constants.STAGE_NEXUSCI){
+                        env.STG_NAME = Constants.STAGE_NEXUSCI
                         nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'build\\DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]
                     }
                 }

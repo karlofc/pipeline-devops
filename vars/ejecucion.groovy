@@ -21,10 +21,14 @@ def call(){
 
                         env.PIPELINE_TYPE = util.pipelineType(env.BRANCH_NAME)
 
-                        if(params.CHOICE == Constants.MAVEN){
-                            maven.call()
-                        } else {
-                            gradle.call()
+                        if(env.PIPELINE_TYPE == Constants.IC){
+                            if(params.CHOICE == Constants.MAVEN){
+                                maven.call()
+                            } else {
+                                gradle.call()
+                            }
+                        }else{
+                            release.call()
                         }
                     }
                 }

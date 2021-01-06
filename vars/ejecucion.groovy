@@ -13,7 +13,7 @@ def call(){
             stage('Pipeline') {
                 steps {
                     script{
-                        //bat 'set'
+                        bat 'set'
                         util.baseOS()
                         env.STG_NAME = ''
                         
